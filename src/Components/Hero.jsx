@@ -46,16 +46,18 @@ const Hero = () => {
 	.to(".left-leaf", { y: -200 }, 0)
 	.to(".arrow", { y: 100 }, 0);
 	
-	const startValue = isMobile ? "top 50%" : "center 60%";
+	const startValue = isMobile ? "top 50%" : "center 60%";  //top 50% here first prop refer to element we are animating and second prop refer to viewport
+    //top 50% means when top of element reaches 50% of screen animation starts
 	const endValue = isMobile ? "120% top" : "bottom top";
+    // 120% top means when 120% of element reaches top of screen animation ends
 	
 	let tl = gsap.timeline({
 	 scrollTrigger: {
 		trigger: "video",
 		start: startValue,
 		end: endValue,
-		scrub: true,
-		pin: true,
+		scrub: true,//when we scroll video will play and when we stop scrolling video will stop
+		pin: true,//pin true means video will be fixed in place when animation starts
 	 },
 	});
 	
@@ -91,6 +93,9 @@ const Hero = () => {
         </div>
     </div>
    </section>
+     <div className="video absolute inset-0">
+        <video src="/public/videos/output.mp4" ref={videoRef} muted playsInline preload="auto" />
+     </div>
    </>
   )
 }
